@@ -11,9 +11,9 @@ use function PHPUnit\Framework\assertEquals;
 
 class FooBarServiceProvider extends TestCase
 {
-    public array $singletons = [
-        HelloService::class => HelloServiceIndonesia::class
-    ];
+    // public array $singletons = [
+    //     HelloService::class => HelloServiceIndonesia::class
+    // ];
 
     public function testServiceProvider()
     {
