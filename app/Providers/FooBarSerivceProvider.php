@@ -6,7 +6,7 @@ use App\Services\HelloService;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class FooBarSerivceProvider extends ServiceProvider implements DeferrableProvider
+class FooBarSerivceProvider extends ServiceProvider
 {
     /**
      * Register services.
