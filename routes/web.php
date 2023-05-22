@@ -26,3 +26,7 @@ Route::redirect('/youtube', '/pzn');
 Route::fallback(function(){
     return "404";
 });
+
+Route::get('/hello-again', function(){
+    return view('hello', ['name' => 'Arnold']);
+});
