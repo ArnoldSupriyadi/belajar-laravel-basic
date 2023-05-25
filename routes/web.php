@@ -75,3 +75,7 @@ Route::get('/hello/request', [HelloController::class, 'request']);
 Route::get('/input/hello', [InputContoller::class, 'hello']);
 
 Route::post('/input/hello', [InputContoller::class, 'hello']);
+
+Route::post('/input/hello/first', [InputContoller::class, 'hello']);
+
+Route::post('/input/hello/input', [InputContoller::class, 'helloInput']);
