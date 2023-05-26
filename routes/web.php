@@ -3,6 +3,8 @@
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\In;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +81,7 @@ Route::post('/input/hello', [InputContoller::class, 'hello']);
 Route::post('/input/hello/first', [InputContoller::class, 'hello']);
 
 Route::post('/input/hello/input', [InputContoller::class, 'helloInput']);
+
+Route::post('/input/filter/only', [InputContoller::class, 'filterOnly']);
+
+Route::post('/input/filter/except', [InputContoller::class, 'filterExcept']);
