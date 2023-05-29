@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
 use Illuminate\Support\Facades\Route;
@@ -85,3 +86,5 @@ Route::post('/input/hello/input', [InputContoller::class, 'helloInput']);
 Route::post('/input/filter/only', [InputContoller::class, 'filterOnly']);
 
 Route::post('/input/filter/except', [InputContoller::class, 'filterExcept']);
+
+Route::post('file/upload', [FileController::class, 'upload']);

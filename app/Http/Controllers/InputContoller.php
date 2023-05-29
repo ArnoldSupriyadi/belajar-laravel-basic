@@ -54,4 +54,5 @@ class InputContoller extends Controller
         $user = $request->except("admin");
         return json_encode($user);
     }
+    
 }
