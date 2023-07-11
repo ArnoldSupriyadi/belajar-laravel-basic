@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CookieController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
@@ -88,3 +89,9 @@ Route::post('/input/filter/only', [InputContoller::class, 'filterOnly']);
 Route::post('/input/filter/except', [InputContoller::class, 'filterExcept']);
 
 Route::post('file/upload', [FileController::class, 'upload']);
+
+Route::get('/cookie/set', [CookieController::class, 'createCookie']);
+
+Route::get('/cookie/gets', [CookieController::class, 'getCookie']);
+
+Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
