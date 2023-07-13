@@ -4,6 +4,7 @@ use App\Http\Controllers\CookieController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
+use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\In;
 use Symfony\Component\Console\Input\Input;
@@ -95,3 +96,15 @@ Route::get('/cookie/set', [CookieController::class, 'createCookie']);
 Route::get('/cookie/gets', [CookieController::class, 'getCookie']);
 
 Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
+
+Route::get('redirect/from', [RedirectController::class, 'redirectFrom']);
+
+Route::get('redirect/to', [RedirectController::class, 'redirectTo']);
+
+Route::get('/redirect/name', [RedirectController::class, 'redirectName']);
+
+Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello'])->name('redirect-hello');
+
+Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
+
+Route::get('/redirect/away', [RedirectController::class, 'redirectAway']);
