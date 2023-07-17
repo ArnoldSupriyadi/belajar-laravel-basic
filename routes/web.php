@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CookieController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\ResponseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\In;
 use Symfony\Component\Console\Input\Input;
@@ -73,6 +75,14 @@ Route::get('/product-redirect/{id}', function($id){
     return redirect()->route('product.detail', ['id' => $id]);
 });
 
+Route::prefix('/response/type')->group(function (){
+    Route::get('/view', [ResponseController::class, 'responseView']);
+    Route::get('/json', [ResponseController::class, 'responseJson']);
+    Route::get('/file', [ResponseController::class, 'responseFile']);
+    Route::get('/view', [ResponseController::class, 'responseView']);
+    Route::get('/download', [ResponseController::class, 'responseDownload']);
+});
+
 Route::get('/hello', [HelloController::class, 'hello']);
 
 Route::get('/hello/request', [HelloController::class, 'request']);
@@ -91,11 +101,14 @@ Route::post('/input/filter/except', [InputContoller::class, 'filterExcept']);
 
 Route::post('file/upload', [FileController::class, 'upload']);
 
-Route::get('/cookie/set', [CookieController::class, 'createCookie']);
+Route::controller(CookieController::class)->group(function(){
+    Route::get('/cookie/set', 'createCookie');
 
-Route::get('/cookie/gets', [CookieController::class, 'getCookie']);
+    Route::get('/cookie/gets', 'getCookie');
 
-Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
+    Route::get('/cookie/clear', 'clearCookie');
+});
+
 
 Route::get('redirect/from', [RedirectController::class, 'redirectFrom']);
 
@@ -108,3 +121,15 @@ Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello']
 Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
 
 Route::get('/redirect/away', [RedirectController::class, 'redirectAway']);
+
+Route::middleware(['contoth:PZN,401'])->prefix('middleware')->group(function(){
+    Route::get('/api', function(){
+        return "OK";
+    });
+    Route::get('/group', function(){
+        return "GROUP";
+    });
+});
+
+Route::get('/form', [FormController::class, 'form']);
+Route::post('/form', [FormController::class, 'submitForm']);
