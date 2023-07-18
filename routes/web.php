@@ -8,6 +8,7 @@ use App\Http\Controllers\InputContoller;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ResponseController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rules\In;
 use Symfony\Component\Console\Input\Input;
 
@@ -117,6 +118,11 @@ Route::get('redirect/to', [RedirectController::class, 'redirectTo']);
 Route::get('/redirect/name', [RedirectController::class, 'redirectName']);
 
 Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello'])->name('redirect-hello');
+Route::get('/redirect/named', function(){
+    // return route('redirect-hello', ['name' => 'Eko']);
+    // return url()->route('redirect-hello', ['name' => 'Eko']);
+    return URL::route('redirect-hello', ['name' => 'Eko']);
+});
 
 Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
 
@@ -133,3 +139,11 @@ Route::middleware(['contoth:PZN,401'])->prefix('middleware')->group(function(){
 
 Route::get('/form', [FormController::class, 'form']);
 Route::post('/form', [FormController::class, 'submitForm']);
+
+Route::get('url/current', function(){
+    return \Illuminate\Support\Facades\URL::full();
+});
+
+Route::get('url/action', function(){
+    return action(FormController::class, 'form');
+});
