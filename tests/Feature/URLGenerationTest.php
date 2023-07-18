@@ -28,5 +28,6 @@ class URLGenerationTest extends TestCase
     public function testAction()
     {
         $this->get('url/action')
+            ->assertSeeText("/form");
     }
 }
