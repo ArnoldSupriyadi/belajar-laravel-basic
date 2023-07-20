@@ -7,6 +7,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputContoller;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ResponseController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rules\In;
@@ -147,3 +148,6 @@ Route::get('url/current', function(){
 Route::get('url/action', function(){
     return action(FormController::class, 'form');
 });
+
+Route::get('/session/create', [SessionController::class, 'createSession']);
+Route::get('/session/get', [SessionController::class, 'getSession']);
