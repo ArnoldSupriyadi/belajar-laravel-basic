@@ -151,3 +151,30 @@ Route::get('url/action', function(){
 
 Route::get('/session/create', [SessionController::class, 'createSession']);
 Route::get('/session/get', [SessionController::class, 'getSession']);
+
+//Error handling
+Route::get('error/sample', function(){
+    throw new Exception ("Sample Error");
+});
+
+Route::get('error/manual', function(){
+    report(new Exception("sample error"));
+    return false;
+});
+
+Route::get('error/validation', function(){
+    throw new \App\Exceptions\ValidationException("Validation Error");
+});
+
+Route::get('/abort/400', function(){
+    abort(400, "Ups Validation Error");
+});
+
+Route::get('/abort/401', function(){
+    abort(401);
+});
+
+
+Route::get('/abort/500', function(){
+    abort(500);
+});
